@@ -21,7 +21,7 @@ class FilmspiderSpider(scrapy.Spider):
     def parse_films(self, response):
         for film in response.json():
             yield {
-                "Title": film["title"],
+                "Title": film["title"].strip(),
                 "Nominations": str(film["nominations"]),
                 "Awards": str(film["awards"]),
                 # Если у строки в таблице "Лучший фильм" не найден, записываем False
